@@ -1,0 +1,39 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<section class="container">  
+    {% if sucess or error %}
+        {% include 'parts/message.njk' %}
+    {% endif %}
+    
+
+  <div class="history-content">
+    <a href="/" class="btn btn-primary btn-return">Voltar</a>
+    <h2>Histórico</h2>
+    <table class="table history-table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Nome da empresa</th>
+          <th scope="col">CNPJ</th>
+          <th scope="col">Tipo de formulário</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for form in forms %}
+            <tr>
+              <th scope="row">{{form.id}}</th>
+              <td>{{form.type}}</td>
+              <td>{{form.company_name}}</td>
+              <td>{{form.cnpj}}</td>
+              <td>{{form.insurance_company}}</td>
+              <td><a href="/{{form._id}}" class="view-form">Visualizar</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>    
+
+</section>
+{% endblock content %}

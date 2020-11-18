@@ -1,0 +1,55 @@
+<div class="item">
+    <div class="font-weight-lighter">Nome da empresa</div>
+    <input type="text" class="form-control" value="{{form.company_name}}" readonly>
+</div>
+
+{# Campo CNPJ na pagina 2 #}
+<div class="item">
+    <div class="font-weight-lighter"> CNPJ</div>
+    <input 
+    type="text" 
+    value="{{form.cnpj}}" 
+    class="form-control"
+    readonly>
+</div>
+{# Campo Ramo de Atividade na Pagina 2 #}
+<div class="item"> 
+
+    <div class="font-weight-lighter"> Ramo de Atividade </div>
+    <input type="text" class="form-control" value="{{form.type_activity}}" readonly>
+</div>
+
+{# Categoria Profissional #}
+<div class="item">
+    <div class="font-weight-lighter"> Categoria Profissional</div>
+    {% for professionalCategory in form.professional_category %}
+        <input 
+        id="professionalCategory1"
+        type="checkbox"
+        checked
+        disabled
+        >
+        <label for="professionalCategory1"> {{professionalCategory}} </label>
+    {% endfor %}
+</div>
+
+{#  Transferência Bradesco Aguardando a explicacao do cliente para fazer o campo #}
+<div class="item">
+    <div class="font-weight-lighter"> Transferência Bradesco? </div>
+    <input type="text" class="form-control" value="{{form.transfer_bradesco}}" readonly>     
+</div>
+
+{% for cardNumber in form.card_number %}
+    <div class="item transferBradesco" >
+        <div>Número do cartão</div>
+        <input type="text"  value="{{cardNumber}}" name="cardNumber" id="cardNumber" readonly>
+    </div>
+{% endfor %}
+
+
+{# Perfil #}
+<div class="item">
+    <div class="font-weight-lighter"> Perfil </div>
+    <input type="text" class="form-control" value="{{form.profile_activity}}" readonly>    
+</div>
+ 

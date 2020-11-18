@@ -1,0 +1,455 @@
+<div class="item company_name">
+    <div class="font-weight-lighter">Nome da empresa</div>
+    <input type="text" class="form-control" name="company_name" placeholder="Digite o nome da empresa">
+</div>
+{# Campo CNPJ na pagina 2 #}
+<div class="item cnpj">
+    <div class="font-weight-lighter"> CNPJ</div>
+    <input 
+        type="text" 
+        name="cnpj" 
+        class="form-control"
+        onkeydown="Mask.apply(this,'cnpj')" 
+        placeholder="Insiria seu CNPJ" value={{cnpj}}>
+</div>
+
+{# Cotação #}
+<div class="itemcol">
+    <div class="font-weight-lighter"> Tipo de Cotação </div>
+    <select   onchange="showShowProductType()" class="custom-select" quote_type name="quote_type">
+         <option
+         value="Saúde"
+         > Saúde
+         </option>
+
+         <!--<option
+         value="Dental"
+         > Dental
+         </option> -->
+
+        <option 
+         value="Conjugado"
+         > Conjugado
+         </option>
+    </select>     
+</div>
+
+{# Produtos #}
+<div class="itemcol" >
+<div product_type style="display:none;">
+
+    <div class="font-weight-lighter"> Tipo de Produto </div>
+    <select  class="custom-select"  name="product_type">
+         <option
+         value="Padrão Doc I"
+         > Padrão Doc I
+         </option>
+
+         <!--<option
+         value="Dental"
+         > Dental
+         </option> -->
+
+        <option 
+         value="Premium Top"
+         > Premium Top
+         </option>
+    </select>    
+    </div> 
+</div>
+
+{# Tipo de Adesão #}
+<div class="itemcol acession">
+    <div class="font-weight-lighter"> Tipo de Adesão</div>
+      <input 
+        id="acession1"
+        type="radio"
+        name="acession" 
+        value="Opcional"
+        >
+         <label for="acession1"> Opcional </label>
+
+         <input 
+        id="acession2"
+        type="radio"
+        name="acession" 
+        value="Compulsório"
+        >
+         <label for="acession2"> Compulsório </label> 
+</div>
+
+{# Produto #}
+<div class="itemcol">
+    <div class="font-weight-lighter"> Produto </div>
+    <select  onchange="showProductForm()" class="custom-select" product name="product"> 
+         <option 
+         value="Top"
+         > Top
+         </option>
+
+         <option 
+         value="Hospital"
+         > Hospitalar
+         </option>     
+    </select>
+</div>
+{# SPG #}
+<div class="itemcol">
+    <div class="font-weight-lighter"> Tipo de SPG </div>
+    <select onchange="showSpgForm()" class="custom-select" spg name="spg"> 
+         <option 
+         value="3-29"
+         > De 3 a 29 vidas
+         </option>
+
+         <option 
+         value="30-99"
+         > De 30 a 99 vidas
+         </option>   
+
+         <option 
+         value="100-199"
+         > De 100 a 199 Vidas
+         </option>   
+    </select>     
+ </div>
+<div class="itemcol">
+   <div class="font-weight-lighter"> Modalidade de Pagamento </div>
+   <select onmouseover="costOption()" class="custom-select" name="payment" payment id="">
+      <option 
+      value="Faixa Etária"
+      > Faixa Etária
+      </option>
+
+      <option
+      value="Custo Médio"
+      > Custo Médio
+      </option>
+   </select>
+</div>
+
+{# Coparticipação #}
+<div class="itemcol">
+    <div class="font-weight-lighter"> Coparticipação </div>
+    
+    <select class="custom-select" coParticipation name="co_participation"> 
+         <option 
+         value="0%"
+         > 0%
+         </option>
+
+         <option
+         value="10%"
+         > 10%
+         </option>
+
+         <option 
+         value="20%"
+         > 20%
+         </option> 
+
+         <option 
+         value="30%"
+         > 30%
+         </option>    
+
+    </select>         
+</div>
+
+{# Qtd de Titulares #}
+ <div class="item holders">
+    <div class="font-weight-lighter">Quantidade de Titulares</div>
+    <input 
+    id="qtsHolders1"
+    onclick="addOwner.checkedFieldHolders(),removeProfile()"
+    type="radio"
+    name="number_holders" 
+    value="1 Titular"
+    >
+    <label for="qtsHolders1"> 1 Titular </label>
+
+    <input 
+    id="qtdHolders2"
+    onclick="addOwner.checkedFieldHolders()"
+    type="radio"
+    name="number_holders" 
+    value="Mais de 1 Titular"
+    >
+    <label for="qtdHolders2"> Mais de 1 Titular </label>
+
+
+ </div>
+
+<div class="item">
+   <input type="button" buttonAddOwner  onmouseover="checkLimitProfile(this)" onclick="addProfile(),checkLimitProfile(this)" class="btn btn-primary" disabled value="Adicionar Perfil">
+</div>
+
+ <div class="profile"> 
+
+   {# Rede #}
+   <div class="item network">
+      <div class="font-weight-lighter"> Rede </div>
+      <select class="custom-select"  onchange="showNetworkForm(this,event.path[2])" network name="profiles[profile1][network]"> 
+            <option 
+            value="empty"
+            > Selecione...
+            </option>
+
+            <option 
+            value="Nacional Flex"
+            > Nacional Flex
+            </option>
+
+
+            <option 
+            value="Nacional"
+            > Nacional
+            </option>
+
+
+            <option 
+            value="Nacional Plus"
+            > Nacional Plus
+            </option>
+
+                        <option 
+            value="Preferencial Plu"
+            > Preferencial Plus
+            </option>
+
+                        <option 
+            value="Premium"
+            > Premium
+            </option>
+
+                        <option 
+            value="Saude 1+"
+            > Saude 1+
+            </option>
+
+                     <option 
+            value="Saúde Efetivo IV"
+            > Saúde Efetivo IV
+            </option>
+            
+
+      </select>     
+   </div>
+   {# Campo Regiao: Irá gerar POP-UP de acordo com a seleção #}
+   <div class="item region">
+      <div class="font-weight-lighter"> Região </div>
+      <select onchange="showRegionForm(this)" class="custom-select"  region name="profiles[profile1][region]"> 
+            <option 
+            value="Alagoas / Sergipe"
+            > Alagoas / Sergipe
+            </option>
+
+            <option 
+            value="AMAZONAS"
+            > AMAZONAS
+            </option>   
+
+            <option 
+            value="Bahia"
+            > Bahia
+            </option>
+
+            <option 
+            value="Centro Oeste Exceto DF"
+            > Centro Oeste Exceto DF
+            </option>
+
+            <option 
+            value="Distrito Federal"
+            > Distrito Federal
+            </option>
+
+            <option 
+            value="Espírito Santo"
+            > Espírito Santo
+            </option>
+
+            <option 
+            value="Maranhão"
+            > Maranhão
+            </option>
+
+            <option 
+            value="Minas Gerais"
+            > Minas Gerais
+            </option>
+
+            <option 
+            value="Nordeste"
+            > Nordeste
+            </option>
+
+            <option 
+            value="Norte"
+            > Norte
+            </option>
+
+            <option 
+            value="PARANA"
+            > PARANA
+            </option>
+
+            <option 
+            value="Pernambuco"
+            > Pernambuco
+            </option>
+
+            <option 
+            value="Rio de Janeiro"
+            > Rio de Janeiro
+            </option>
+
+            <option 
+            value="RIO GRANDE DO SUL"
+            > RIO GRANDE DO SUL
+            </option>
+
+            <option 
+            value="SÃO PAULO - INTERIOR - 1"
+            > SÃO PAULO - INTERIOR - 1
+            </option>
+
+            <option 
+            value="SÃO PAULO - INTERIOR - 2"
+            > SÃO PAULO - INTERIOR - 2
+            </option>
+
+            <option 
+            value="São Paulo Capital"
+            > São Paulo Capital
+            </option>
+
+            <option 
+            value="Santa Catarina"
+            > Santa Catarina
+            </option>
+      </select>     
+   </div>
+
+   {# Acomodação #}
+   <div class="item accommodation">
+      <div class="font-weight-lighter"> Acomodação </div>
+      <select class="custom-select"  accommodation name="profiles[profile1][accommodation] "> 
+             <option 
+            value="empty"
+            > Selecione...
+            </option>
+
+            <option
+            style="display: none;" 
+            value="Enfermaria"
+            > Enfermaria
+            </option>
+
+            <option
+            style="display: none;" 
+            value="Apartamento"
+            > Apartamento
+            </option>   
+
+            <option
+            style="display: none;" 
+            value="Múltiplo 2"
+            > Múltiplo 2
+            </option>
+
+            <option
+            style="display: none;" 
+            value="Múltiplo 3"
+            > Múltiplo 3
+            </option>
+
+            <option
+            style="display: none;" 
+            value="Múltiplo 4"
+            > Múltiplo 4
+            </option>
+
+            <option
+            style="display: none;" 
+            value="Múltiplo 6"
+            > Múltiplo 6
+            </option>
+
+            <option
+            style="display: none;" 
+            value="Múltiplo 8"
+            > Múltiplo 8
+            </option>
+      </select>     
+   </div>
+   {# Titular #}
+   <div class="ageGroup">
+      <div class="font-weight-lighter owner">  
+         <div>Titular</div>
+      </div>
+      <div class="ageGroupField">
+         <div class="text-center"> 0-18 </div>
+         <input type="number" name="profiles[profile1][ageGroups][0-18]" id="0-18" min="0" value="0">
+      </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 19-23 </div>
+         <input type="number" name="profiles[profile1][ageGroups][19-23]" id="19-23"min="0" value="0">
+      </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 24-28 </div>
+         <input type="number" name="profiles[profile1][ageGroups][24-28]" id="24-28"min="0" value="0">
+      </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 29-33 </div>
+         <input type="number" name="profiles[profile1][ageGroups][29-33]" id="29-33"min="0" value="0">
+      </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 34-38 </div>
+         <input type="number" name="profiles[profile1][ageGroups][34-38]" id="34-38"min="0" value="0">
+      </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 39-43 </div>
+         <input type="number" name="profiles[profile1][ageGroups][39-43]" id="39-43"min="0" value="0">
+      </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 44-48 </div>
+         <input type="number" name="profiles[profile1][ageGroups][44-48]" id="44-48"min="0" value="0">
+      </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 49-53 </div>
+         <input type="number" name="profiles[profile1][ageGroups][49-53]" id="49-53"min="0" value="0">
+      </div>
+
+   <div class="ageGroupField">
+        <div class="text-center"> 54-58 </div>
+        <input type="number" name="profiles[profile1][ageGroups][54-58]" id="54-58"min="0" value="0">
+    </div>
+
+      <div class="ageGroupField">
+         <div class="text-center"> 59-64 </div>
+         <input type="number" name="profiles[profile1][ageGroups][59-64]" id="59-64" min="0" value="0">
+    </div>
+      
+            <div class="ageGroupField">
+         <div class="text-center"> 65-80 </div>
+         <input type="number" name="profiles[profile1][ageGroups][65-80]" id="65-80" min="0" value="0">
+    </div>
+          <div class="ageGroupField">
+         <div class="text-center"> 81 ou + </div>
+         <input type="number" name="profiles[profile1][ageGroups][81]" id="81" min="0" value="0">
+    </div>
+      
+   </div>
+
+</div>
+
+
+

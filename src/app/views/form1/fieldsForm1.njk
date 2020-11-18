@@ -1,0 +1,434 @@
+{# Quantidade de Vidas #}
+
+
+
+ <div class="item company_name">
+    <div class="font-weight-lighter">Nome da empresa</div>
+    <input type="text" class="form-control" name="company_name" placeholder="Digite o nome da empresa">
+ </div>
+{# Campo CPNJ texto #}
+ <div class="item cnpj">
+    <div class="font-weight-lighter"> CNPJ </div>
+    <input 
+    type="text" 
+    class="form-control" 
+    name="cnpj" 
+    onkeydown="Mask.apply(this,'cnpj')"
+    placeholder="Digite o seu cnpj">
+ </div>
+{# Tipo de CPNJ #}
+ <div class="item typeCnpj">
+    <div class="font-weight-lighter"> Tipo de CNPJ </div>
+        <div class="checkbox">
+            <input 
+            id="type_cnpj1"
+            type="radio"
+            name="type_cnpj"
+            value="Contrato Social ou Requerimento de Empresário"
+            {% if type_cnpj == 'socialContract' %}
+                checked
+            {% endif %}> 
+            <label for="type_cnpj1">Contrato Social ou Requerimento de Empresário </label>
+            </div>
+
+        <div class="radio">
+        <input 
+         id="type_cnpj2"
+         type="radio"
+         name="type_cnpj"
+         value="EIRELI - Empresa Individual de Responsabilidade Limitada"
+         {% if type_cnpj == 'EIRELI - Empresa Individual de Responsabilidade Limitada' %}
+            checked
+         {% endif %}
+         > 
+         <label for="type_cnpj2"> EIRELI - Empresa Individual de Responsabilidade Limitada </label>
+         </div> 
+    
+
+         <input 
+         id="type_cnpj3"
+         type="radio"
+         name="type_cnpj"
+         value="EIRELI - EPP"
+         {% if type_cnpj == 'EIRELI - EPP' %}
+            checked
+         {% endif %}
+         >
+         <label for="type_cnpj3">  EIRELI - EPP </label> 
+         
+
+        <input 
+         id="type_cnpj4"
+         type="radio"
+         name="type_cnpj" 
+         value="EIRELI - ME"
+         {% if type_cnpj == 'EIRELI - ME' %}
+            checked
+         {% endif %}
+         >
+         <label for="type_cnpj4"> EIRELI - ME  </label> 
+         
+
+        <input 
+         id="type_cnpj5"
+         type="radio"
+         name="type_cnpj"
+         value="EPP - Empresa de Pequeno Porte"
+         {% if type_cnpj == 'EPP - Empresa de Pequeno Porte' %}
+            checked
+         {% endif %}
+         >
+         <label for="type_cnpj5">  EPP - Empresa de Pequeno Porte  </label>
+                 
+         <input 
+         id="type_cnpj6"
+         type="radio"
+         name="type_cnpj" 
+         value="Estatuto Social"
+         {% if type_cnpj == 'Estatuto Social' %}
+            checked
+         {% endif %}
+         >
+         <label for="type_cnpj6"> Estatuto Social </label>
+         
+        
+         <input 
+         id="type_cnpj7"
+         type="radio"
+         name="type_cnpj" 
+         value="ME - Micro Empresa"
+         {% if type_cnpj == 'ME - Micro Empresa' %}
+            checked
+         {% endif %}
+         >
+         <label for="type_cnpj7"> ME - Micro Empresa </label>
+         
+         <div class="radio">
+         <input 
+         id="type_cnpj8"
+         type="radio"
+         name="type_cnpj" 
+         value="MEI - Microempreendedor Individual"
+         {% if type_cnpj == 'MEI - Microempreendedor Individual' %}
+            checked
+         {% endif %}
+         >
+         <label for="type_cnpj8"> MEI - Microempreendedor Individual  </label>
+         </div>
+              
+ </div>
+
+
+{# Quantidade de Vidas #}
+
+{# Produto de Saúde #}
+  <div class="item">
+    <div class="font-weight-lighter"> Produto Saúde </div>
+    <select name="health_product" class="custom-select"> 
+         <option 
+         value="Hospitalar"
+         {% if healthProduct == 'Hospitalar' %}
+            selected
+         {% endif %}
+         >
+         Hospitalar 
+         </option>
+
+         <option 
+         value="Completo"
+         {% if healthProduct == 'Completo' %}
+            selected
+         {% endif %}
+         >
+         Completo 
+         </option>
+    </select>     
+ </div>
+{# UF #}
+ <div class="item uf">
+    <div class="font-weight-lighter"> UF </div>
+    <select id="UF" name="uf" class="custom-select" >
+        <option value="empty">Selecione...</option>
+        {% for uf in uf_counties %}
+            <option value="{{uf.name}}">{{ uf.name.toUpperCase() }}</option>
+        {% endfor %}
+    </select>
+ </div>
+
+ {# Município #}
+ <div class="item">
+    <div class="font-weight-lighter"> Município </div>
+    <select id="county" name="county" class="custom-select">
+        <option value="empty">Selecione...</option>
+    </select>     
+ </div>
+ {# Tipo de Contratação #}
+ <div class="item type_contract">
+    <div class="font-weight-lighter"> Tipo de Contratação </div>
+    
+        <input 
+        id="type_contract1"
+        type="radio"
+        name="type_contract"
+        value="Compulsório - 100% do Grupo Segurável"
+        >
+        <label for="type_contract1"> Compulsório - 100% do Grupo Segurável  </label>
+        
+        
+
+        <input 
+        id="type_contract2"
+        type="radio"
+        name="type_contract" 
+        value="Compulsório - 100% da Categoria Funcional (CBO)"
+        {% if type_contract == 'Compulsório - 100% da Categoria Funcional (CBO)' %}
+            checked
+        {% endif %}
+        >
+        <label for="type_contract2"> Compulsório - 100% da Categoria Funcional (CBO) </label>
+         
+        
+
+        <input 
+        id="type_contract3"
+        type="radio"
+        name="type_contract"
+        value="Regra Flex"
+        {% if type_contract == 'Regra Flex' %}
+            checked
+        {% endif %}
+        >
+        <label for="type_contract3"> Regra Flex </label>
+        
+               
+ </div>
+ {# Campo Plano de Saúde #}
+  <div class="item plantype">
+    <div class="font-weight-lighter"> Plano </div>
+    
+        <input
+        id="planType1"
+        type="checkbox"
+        name="plans[plan1][name]"
+        value="Exato Enfermaria"
+        onclick="addAgeGroupsForPlan('plan1', 'Exato Enfermaria', 'planType1'),planCheckbox.planLimit(event.path[1])"
+        >
+        <label for="planType1"> Exato Enfermaria </label>
+        
+        <input
+        id="planType2"
+        type="checkbox"
+        name="plans[plan2][name]"
+        value="Exato Apartamento"  
+        onclick="addAgeGroupsForPlan('plan2', 'Exato Apartamento', 'planType2'),planCheckbox.planLimit(event.path[1])"
+        >
+        <label for="planType2"> Exato Apartamento </label>
+                
+        <input
+        id="planType3"
+        type="checkbox"
+        name="plans[plan3][name]"
+        value="Especial R1" 
+        onclick="addAgeGroupsForPlan('plan3', 'Especial R1', 'planType3'),planCheckbox.planLimit(event.path[1])"
+        >
+        <label for="planType3"> Especial R1 </label>
+            
+       
+        <input
+        id="planType4"
+        type="checkbox"
+        name="plans[plan4][name]"
+        value="Especial R2"  
+        onclick="addAgeGroupsForPlan('plan4', 'Especial R2', 'planType4'),planCheckbox.planLimit(event.path[1])"
+        >
+        <label for="planType4"> Especial R2 </label>
+         
+
+        <input
+        id="planType5"
+        type="checkbox"
+        name="plans[plan5][name]"
+        value="Especial R3" 
+        onclick="addAgeGroupsForPlan('plan5', 'Especial R3', 'planType5'),planCheckbox.planLimit(event.path[1])"
+        >
+        <label for="planType5"> Especial R3 </label>
+        
+        
+        <input
+        id="planType6"
+        type="checkbox"
+        name="plans[plan6][name]"
+        value="Executivo R1"
+        onclick="addAgeGroupsForPlan('plan6', 'Executivo R1', 'planType6'),planCheckbox.planLimit(event.path[1])"
+        >
+        <label for="planType6"> Executivo R1 </label>
+        
+        <div>
+            <input
+            id="planType7"
+            type="checkbox"
+            name="plans[plan7][name]"
+            value="Executivo R2"
+            onclick="addAgeGroupsForPlan('plan7', 'Executivo R2', 'planType7'),planCheckbox.planLimit(event.path[2])"
+            >
+            <label for="planType7"> Executivo R2  </label>
+                        
+            <input
+            id="planType8"
+            type="checkbox"
+            name="plans[plan8][name]"
+            value="Executivo R3"
+            onclick="addAgeGroupsForPlan('plan8', 'Executivo R3', 'planType8'),planCheckbox.planLimit(event.path[2])"
+            >
+            <label for="planType8"> Executivo R3 </label>
+        </div>        
+ </div>
+ {# Vidas por faixa etária - Carregado de forma dinâmica #}
+
+
+ <script>
+    var uf_counties = {{ uf_counties | dump | safe }};
+
+    function getUF() {
+        var selected_uf = document.getElementById("UF").value;
+        var counties;
+        if (selected_uf !== 'empty') {
+            uf = uf_counties.find((uf) => {
+                if (uf.name === selected_uf)
+                    return uf.counties;
+            })
+            var str = ""
+            for (var i=0; i < uf.counties.length ; i++) {
+                str += "<option value='" + uf.counties[i] + "'>" + uf.counties[i] + "</option>"
+            }
+
+            document.getElementById("county").innerHTML = str;
+        } else {
+            document.getElementById("county").innerHTML = "<option value='empty'>Selecione...</option>";
+        }
+    }
+
+    function clearInputs(planId) {
+        const tables = document.querySelectorAll(`.ageGroupInput_${planId}`);
+        let table;
+        for (table of tables) {
+            table.firstElementChild.value = '0';
+        }
+    };
+
+    function addAgeGroupsForPlan(planNumber, plan, planId) {
+        var checkbox = document.getElementById(planId);
+
+        if (checkbox.checked) {
+            var html = `<div id='ageGroup_${planId}' class='ageGroupContent'>`
+            +`<h6>${plan}</h6><br>`
+            +`<button class='btn btn-primary btn-add-more-lives' type='button' onclick='addMoreLives("${planNumber}", "${plan}", "${planId}")'>Incluir vidas acima de 58 anos</button>`
+            +`<div id='ageGroup_${plan}' class='ageGroup'>`
+            +    "<div class='font-weight-lighter owner'>"
+            +        "<div>Vidas</div>"
+            +    "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 0-18 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][0-18]' min='0' value="0">`
+            +    "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 19-23 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][19-23]' min='0' value="0">`
+            +    "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 24-28 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][24-28]' min='0' value="0">`
+            +    "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 29-33 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][29-33]' min='0' value="0">`
+            +   "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 34-38 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][34-38]' min='0' value="0">`
+            +    "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 39-43 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][39-43]' min='0' value="0">`
+            +   "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 44-48 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][44-48]' min='0' value="0">`
+            +    "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 49-53 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][49-53]' min='0' value="0">`
+            +    "</div>"
+            +    "<div class='ageGroupField'>"
+            +        "<div class='text-center'> 54-58 </div>"
+            +        `<input type='number' name='plans[${planNumber}][ageGroups][54-58]' min='0' value="0">`
+            +    "</div>"
+            +"</div>"
+            +"</div>"
+
+            var fields = document.getElementById('fields');
+            fields.insertAdjacentHTML('beforeend', html);
+        } else {
+            var ageGroup = document.getElementById(`ageGroup_${planId}`);
+            ageGroup.parentNode.removeChild(ageGroup);
+        }
+    }
+
+    function addMoreLives(planNumber, plan, planId) {
+        var firstAgeGroup = document.getElementById("ageGroup_"+plan);
+        {# if (firstAgeGroup.children.length < 16){
+            var html = `<div class='ageGroupField'>
+                            <select id='${planNumber}_age' name='plans[${planNumber}][ageGroups][age]' class='custom-select-more-lives'> 
+                                <option value='empty'>...</option>
+                            </select>   
+                            <input type='number' name='plans[${planNumber}][ageGroups][qtd]' min='0' value="0">
+                        </div>`
+            var firstAgeGroupPlan = document.getElementById("ageGroup_"+plan);
+            firstAgeGroupPlan.insertAdjacentHTML('beforeend', html);
+        } else { #}
+
+        var secondAgeGroup = document.getElementById("secondAgeGroup_"+plan);
+        if (!secondAgeGroup) {
+            var newAgeGroup = `<div id='secondAgeGroup_${plan}' class='secondAgeGroup'>
+                                <div class='ageGroupField'>
+                                    <select id='${planNumber}_age' name='plans[${planNumber}][ageGroups][age]' class='custom-select-more-lives'> 
+                                        <option value='empty'>...</option>
+                                    </select>   
+                                    <input type='number' name='plans[${planNumber}][ageGroups][qtd]' min='0' value="0">
+                                </div>
+                            </div>
+                            `;
+        
+            var ageGroup = document.getElementById('ageGroup_'+planId);
+            ageGroup.insertAdjacentHTML('beforeend', newAgeGroup);
+        } else if (secondAgeGroup.children.length < 10) {
+            var secondAgeGroup = document.getElementById("secondAgeGroup_"+plan);
+            if (secondAgeGroup.children.length < 15) {
+                var newInputField = `<div class='ageGroupField'>
+                                        <select id='${planNumber}_age' name='plans[${planNumber}][ageGroups][age]' class='custom-select-more-lives'> 
+                                            <option value='empty'>...</option>
+                                        </select>   
+                                        <input type='number' name='plans[${planNumber}][ageGroups][qtd]' min='0' value="0">
+                                    </div>`;
+                var secondAgeGroup = document.getElementById('secondAgeGroup_'+plan);
+                secondAgeGroup.insertAdjacentHTML('beforeend', newInputField);
+            }
+        }
+
+        {# } #}
+        var moreLivesRange = "";
+        
+        for (var i=59; i < 100 ; i++) {
+            moreLivesRange += "<option value='"+ i + "'>" + i + "</option>";
+        }
+        var selects = document.querySelectorAll(`#${planNumber}_age`);
+        let select;
+        for (select of selects){
+            if (select.children.length === 1){
+                select.insertAdjacentHTML('beforeend', moreLivesRange);
+            }
+        }
+    }
+
+    document.getElementById("UF").addEventListener("change", getUF);
+</script>

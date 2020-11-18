@@ -1,0 +1,147 @@
+{# Quantidade de Vidas #}
+<div class="item">
+  <div class="font-weight-lighter"> Quantidade de Vidas </div>
+  <input type="text" class="form-control" value="{{form.qtd_lives}}" readonly>
+</div>
+
+<div class="item">
+  <div class="font-weight-lighter">Nome da empresa</div>
+  <input type="text" class="form-control" name="company_name" value="{{form.company_name}}" placeholder="Digite o nome da empresa" readonly>
+</div>
+
+{# Campo CPNJ texto #}
+<div class="item">
+  <div class="font-weight-lighter"> CNPJ </div>
+  <input 
+    type="text" 
+    class="form-control" 
+    name="cnpj" 
+    value="{{form.cnpj}}"
+    onkeydown="Mask.apply(this,'cnpj')"
+    placeholder="Digite o seu cnpj" 
+    readonly>
+</div>
+
+{# Tipo de CPNJ #}
+<div class="typeCnpj">
+  <div class="font-weight-lighter"> Tipo de CNPJ </div>
+  <div class="checkbox">
+    <input 
+      id="typeCnpj1"
+      type="radio"
+      checked
+      > 
+    <label for="typeCnpj1">{{form.type_cnpj}} </label>
+  </div>
+</div>
+
+{# Produto de Saúde #}
+<div class="item">
+  <div class="font-weight-lighter"> Produto Saúde </div>
+  <input type="text" class="form-control" value="{{form.health_product}}" readonly>
+  </select>
+</div>
+
+{# UF #}
+<div class="item">
+  <div class="font-weight-lighter"> UF </div>
+  <input type="text" class="form-control" value="{{form.uf.toUpperCase()}}" readonly>
+</div>
+
+{# Município #}
+<div class="item">
+  <div class="font-weight-lighter"> Município </div>
+  <input type="text" class="form-control" value="{{form.county.toUpperCase()}}" readonly>
+</div>
+
+{# Tipo de Contratação #}
+<div class="item">
+  <div class="font-weight-lighter"> Tipo de Contratação </div>
+  <input 
+    id="typeContract1"
+    type="radio"
+    checked
+    >
+  <label for="typeContract1"> {{form.type_contract}}  </label>
+</div>
+{# Campo Plano de Saúde #}
+<div class="item">
+  <div class="font-weight-lighter"> Plano(s) </div>
+  {% for plan  in form.plans %}
+  <input
+    id="planType8"
+    type="checkbox"
+    checked
+    disabled
+    >
+  <label for="planType8"> {{plan.name}} </label>
+  {% endfor %}
+</div>
+</div>
+{# Vidas por faixa etária - Carregado de forma dinâmica #}
+{% for plan in form.plans %}
+<div id='ageGroup_${planId}' class='ageGroupContent'>
+  <h6>{{plan.name}}</h6>
+  <br>
+  <div class='ageGroup'>
+    <div class='font-weight-lighter owner'>
+      <div>Vidas</div>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 0-18 </div>
+      <input type='number' name='${plan}_0_18' min='0' value="{{plan.ageGroups['0-18']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 19-23 </div>
+      <input type='number' name='${plan}_19_23' min='0' value="{{plan.ageGroups['19-23']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 24-28 </div>
+      <input type='number' name='${plan}_24_28' min='0' value="{{plan.ageGroups['24-28']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 29-33 </div>
+      <input type='number' name='${plan}_29_33' min='0' value="{{plan.ageGroups['29-33']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 34-38 </div>
+      <input type='number' name='${plan}_34_38' min='0' value="{{plan.ageGroups['34-38']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 39-43 </div>
+      <input type='number' name='${plan}_39_43' min='0' value="{{plan.ageGroups['39-43']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 44-48 </div>
+      <input type='number' name='${plan}_44_48' min='0' value="{{plan.ageGroups['44-48']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 49-53 </div>
+      <input type='number' name='${plan}_49_53' min='0' value="{{plan.ageGroups['49-53']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 54-58 </div>
+      <input type='number' name='${plan}_54_58' min='0' value="{{plan.ageGroups['54-58']}}" readonly>
+    </div>
+    <div class='ageGroupField'>
+      <div class='text-center'> 54-58 </div>
+      <input type='number' name='${plan}_54_58' min='0' value="{{plan.ageGroups['54-58']}}" readonly>
+    </div>
+  </div>
+</div>
+{% if plan.ageGroups.age59 %}
+<div id='secondAgeGroup_{{plan.name}}' class='secondAgeGroup'>
+  <div class='ageGroup'>
+    <div class='font-weight-lighter owner'>
+      <div>Vidas</div>
+    </div>
+    {% for age59 in plan.ageGroups.age59 %}
+    <div class='ageGroupField'>
+      <div class='text-center'> {{age59.title}} </div>
+      <input type='number' name='{{plan.name}}_count' min='0' value="{{age59.value}}" readonly>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endfor %}

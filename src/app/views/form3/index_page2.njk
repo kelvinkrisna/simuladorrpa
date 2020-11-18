@@ -1,0 +1,26 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<section class="container form3">  
+    {% if sucess or error %}
+        {% include 'parts/message.njk' %}
+    {% endif %}
+    <form method="POST" action="/form3?_method=PUT">
+
+        <div class="header">
+            <a href="/form3" class="btn btn-primary btn-return">Voltar</a>
+            <h3 class="text-center">Formulário Bradesco SIMULAÇÃO</h3>
+        </div>
+
+        <div class="fields">
+            {% include 'form3/fields/fieldsForm3_page2.njk' %}
+            <input type="hidden" name="id" value ="{{id}}">
+        </div>
+
+        
+
+        <button class="btn btn-primary button-save btn-lg btn-block"  onclick="Validate.form3Page2(event)" type="submit"> SALVAR </button>
+
+    </form>
+
+</section>
+{% endblock content %}

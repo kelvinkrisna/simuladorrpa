@@ -1,0 +1,24 @@
+form1{% extends 'layout.njk' %}
+{% block content %}
+<section class="container form2"> 
+    {% if sucess or error %}
+        {% include 'parts/message.njk' %}
+    {% endif %}  
+    <form method="POST" action="/form2">
+
+        <div class="header">
+            <a href="/" class="btn btn-primary btn-return">Voltar</a>
+            <h3 class="text-center">Formulário Amil</h3>
+        </div>
+
+        <div id="fields" class="fields">
+            {% include 'form2/fieldsForm2.njk' %}
+            <input type="hidden" name="insurance_company" value ="Amil">
+        </div>
+
+        <button class="btn btn-primary button-save btn-lg btn-block" onclick="Validate.form2(event)" type="submit"> SALVAR </button>
+
+    </form>
+
+</section>
+{% endblock content %}

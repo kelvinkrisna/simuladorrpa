@@ -1,0 +1,413 @@
+<div class="item company_name">
+    <div class="font-weight-lighter">Nome da empresa</div>
+    <input type="text" class="form-control" name="company_name" placeholder="Digite o nome da empresa">
+ </div>
+
+  <div class="item cnpj">
+    <div class="font-weight-lighter"> CNPJ </div>
+    <input 
+    type="text" 
+    class="form-control" 
+    name="cnpj"
+    onkeydown="Mask.apply(this,'cnpj')"
+    placeholder="Digite o seu cnpj">
+ </div>
+
+
+<div class="item coligation">
+    <div class="font-weight-lighter"> Haverá coligação? </div>
+    
+        <input 
+        id="coalitionYes"
+        type="radio"
+        name="coalition"
+        onchange="coligationField()" 
+         value="Sim"
+         >
+         <label for="coalitionYes">Sim</label>
+                 
+        <input 
+        id="coalitionNo"
+        type="radio"
+        name="coalition" 
+        value="Não"
+        onclick="removeAfter(this.parentNode.nextSibling)"
+         >
+         <label for="coalitionNo">Não</label>
+                           
+ </div>
+
+ <div class="item mei">
+    <div class="font-weight-lighter"> É empresa MEI? </div>
+ 
+        <input 
+        id="meiYes"
+        type="radio"
+        name="mei"  
+        value="Sim"
+        onchange="removeOptionCompulsory()"
+         >
+         <label for="meiYes"> Sim </label>
+
+
+        <input 
+        id="meiNo"
+        type="radio"
+        name="mei" 
+        value="Não"
+        onchange="addOptionCompulsory()"
+         >
+         <label for="meiNo"> Não </label>
+         
+            
+         
+ </div>
+
+ <div class="item">
+    <div class="font-weight-lighter"> Tabela </div>
+    <select class="custom-select" name="table" id="table"> 
+         <option 
+         value="Compulsória"
+         >
+         Compulsória
+         </option>
+
+         <option 
+         value="Opcional"
+         >
+         Opcional
+         </option>   
+    </select>     
+ </div>
+
+ 
+ <div class="item cep">
+    <div class="font-weight-lighter">Cep</div>
+    <input 
+    type="text" 
+    name="cep" 
+    class="form-control" 
+    onkeydown="Mask.apply(this,'cep')"
+    placeholder="Informe o seu CEP">
+ </div>
+
+ {# Produto #}
+ <div class="item product">
+    <div class="font-weight-lighter"> Produto </div>
+    <select id="product" name="product" class="custom-select"> 
+        <option value="empty">Selecione...</option>
+        {% for product in amil_products %}
+            <option value="{{product.name}}">{{ product.name.split('_').join(' ').toUpperCase() }}</option>
+        {% endfor %}
+    </select>
+ </div>
+
+ {# Plano #}
+ <div class="item">
+    <div class="font-weight-lighter"> Plano </div>
+    <select id="plan1" name="plans[plan1][name]" class="custom-select"> 
+        <option value="empty">Selecione...</option>
+    </select>     
+ </div>
+
+<div id="ageGroup_plan1" class="ageGroup">
+    <div class="font-weight-lighter owner">  
+        <div>Vidas</div>
+    </div>
+    <div class="ageGroupField">
+        <div class="text-center"> 0-18 </div>
+        <input type="number" name="plans[plan1][ageGroups][0-18]" min='0' value='0'>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 19-23 </div>
+        <input type="number" name="plans[plan1][ageGroups][19-23]" min='0' value='0'>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 24-28 </div>
+        <input type="number" name="plans[plan1][ageGroups][24-28]" min='0' value='0'>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 29-33 </div>
+        <input type="number" name="plans[plan1][ageGroups][29-33]" min='0' value='0'>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 34-38 </div>
+        <input type="number" name="plans[plan1][ageGroups][34-38]" min='0' value='0'>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 39-43 </div>
+        <input type="number" name="plans[plan1][ageGroups][39-43]" min='0' value='0'>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 44-48 </div>
+        <input type="number" name="plans[plan1][ageGroups][44-48]" min='0' value='0'>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 49-53 </div>
+        <input type="number" name="plans[plan1][ageGroups][49-53]" min='0' value='0'>
+    </div>
+
+      <div class="ageGroupField">
+        <div class="text-center"> 54-58 </div>
+        <input type="number" name="plans[plan1][ageGroups][54-58]" min='0' value='0'>
+    </div>
+    
+    <div class="ageGroupField">
+        <div class="text-center"> 59 ou + </div>
+        <input type='number' min='0' data-toggle='modal' data-target='#modal_plan1' readonly>
+    </div>
+ </div>
+
+{# Modal para faixa etária acima de 59 anos #}
+<div class='modal fade' id='modal_plan1' tabindex='-1' role='dialog' aria-labelledby='modal_plan1' aria-hidden='true'>
+<div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+    <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Número de sócios</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>
+    <div class='modal-body'>
+        <p>Para esta categoria será necessário detalhar as faixas etárias e estado de sociedade destes beneficiários:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class='ageGroupTitle'>Faixa etária</th>
+                    <th>Não-sócios</th>
+                    <th>Sócios / Cônjuge do Sócio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>De 59 a 63 anos</td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][59-63_nao_socios]' min='0' value='0'></td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][59-63_socios_conjuges]' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>De 64 a 68 anos</td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][64-68_nao_socios]' min='0' value='0'></td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][64-68_socios_conjuges]' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>De 69 a 73 anos</td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][69-73_nao_socios]' min='0' value='0'></td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][69-73_socios_conjuges]' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>De 74 a 78 anos</td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][74-78_nao_socios]' min='0' value='0'></td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][74-78_socios_conjuges]' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>79 anos ou mais</td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][79_nao_socios]' min='0' value='0'></td>
+                    <td class='ageGroupInput_plan1'><input type='number' name='plans[plan1][ageGroups][79_socios_conjuges]' min='0' value='0'></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='modal-footer'>
+        <button type='button' class='btn btn-secondary' onclick="clearInputs('plan1')">Limpar campos</button>
+        <button type='button' class='btn btn-primary' data-dismiss='modal'>Ok</button>
+    </div>
+    </div>
+</div>
+</div>
+
+ <button id="btn-add-more-plan" type="button" class="btn btn-primary btn-add-more-plan" onclick="addMorePlan()">
+    Adicionar mais planos
+ </button>
+
+ <script>
+    var amil_products = {{ amil_products | dump | safe }};
+    var qtd_plan = 1;
+    var selected_product;
+
+    function clearInputs(planId) {
+        const tables = document.querySelectorAll(`.ageGroupInput_${planId}`);
+        let table;
+        for (table of tables) {
+            table.firstElementChild.value = '0';
+        }
+    };
+
+    function getProduct() {
+        selected_product = document.getElementById("product").value;
+        var plans;
+
+        if (selected_product !== 'empty') {
+            product = amil_products.find((product) => {
+                if (product.name === selected_product)
+                    return product.plans;
+            });
+
+            var str = ""
+
+            for (var i=0; i < product.plans.length ; i++) {
+                str += "<option value='" + product.plans[i] + "'>" + product.plans[i] + "</option>"
+            }
+
+            document.getElementById("plan1").innerHTML = str;
+        } else {
+            document.getElementById("plan1").innerHTML = "<option value='empty'>Selecione...</option>";
+        }
+    }
+
+    function addMorePlan() {
+        if (qtd_plan < 4) {
+            qtd_plan++;
+            
+            var html = `<div class='item-more-plan'>
+                            <div class='font-weight-lighter'> Plano </div>
+                            <select id='plan${qtd_plan}' name='plans[plan${qtd_plan}][name]' class='custom-select'> 
+                                <option value='empty'>Selecione...</option>
+                            </select>     
+                        </div>
+                        <div id="ageGroup_plan${qtd_plan}" class="ageGroup">
+                            <div class="font-weight-lighter owner">  
+                                <div>Vidas</div>
+                            </div>
+                            <div class="ageGroupField">
+                                <div class="text-center"> 0-18 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][0-18]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 19-23 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][19-23]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 24-28 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][24-28]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 29-33 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][29-33]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 34-38 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][34-38]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 39-43 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][39-43]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 44-48 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][44-48]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 49-53 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][49-53]" min='0' value='0'>
+                            </div>
+
+                            <div class="ageGroupField">
+                                <div class="text-center"> 54-58 </div>
+                                <input type="number" name="plans[plan${qtd_plan}][ageGroups][54-58]" min='0' value='0'>
+                            </div>
+                            
+                            <div class="ageGroupField">
+                                <div class="text-center"> 59 ou + </div>
+                                <input type='number' min='0' data-toggle='modal' data-target='#modal_plan${qtd_plan}' readonly>
+                            </div>
+                        </div>
+                        <div class='modal fade' id='modal_plan${qtd_plan}' tabindex='-1' role='dialog' aria-labelledby='modal_plan${qtd_plan}' aria-hidden='true'>
+                            <div class='modal-dialog' role='document'>
+                                <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <h5 class='modal-title' id='exampleModalLabel'>Número de sócios</h5>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                    <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <p>Para esta categoria será necessário detalhar as faixas etárias e estado de sociedade destes beneficiários:</p>
+
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class='ageGroupTitle'>Faixa etária</th>
+                                                <th>Não-sócios</th>
+                                                <th>Sócios / Cônjuge do Sócio</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>De 59 a 63 anos</td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][59-63_nao_socios]' min='0' value='0'></td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][59-63_socios_conjuges]' min='0' value='0'></td>
+                                            </tr>
+                                            <tr>
+                                                <td>De 64 a 68 anos</td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][64-68_nao_socios]' min='0' value='0'></td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][64-68_socios_conjuges]' min='0' value='0'></td>
+                                            </tr>
+                                            <tr>
+                                                <td>De 69 a 73 anos</td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][69-73_nao_socios]' min='0' value='0'></td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][69-73_socios_conjuges]' min='0' value='0'></td>
+                                            </tr>
+                                            <tr>
+                                                <td>De 74 a 78 anos</td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][74-78_nao_socios]' min='0' value='0'></td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][74-78_socios_conjuges]' min='0' value='0'></td>
+                                            </tr>
+                                            <tr>
+                                                <td>79 anos ou mais</td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][79_nao_socios]' min='0' value='0'></td>
+                                                <td class='ageGroupInput_plan${qtd_plan}'><input type='number' name='plans[plan${qtd_plan}][ageGroups][79_socios_conjuges]' min='0' value='0'></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button type='button' class='btn btn-secondary' onclick='clearInputs("plan${qtd_plan}")'>Limpar campos</button>
+                                    <button type='button' class='btn btn-primary' data-dismiss='modal'>Ok</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        `;
+
+            var fields = document.getElementById('fields');
+            fields.insertAdjacentHTML('beforeend', html);
+
+            if (selected_product !== 'empty') {
+                product = amil_products.find((product) => {
+                    if (product.name === selected_product)
+                        return product.plans;
+                });
+
+                var str = ""
+
+                for (var i=0; i < product.plans.length ; i++) {
+                    str += "<option value='" + product.plans[i] + "'>" + product.plans[i] + "</option>"
+                }
+
+                document.getElementById("plan"+qtd_plan).innerHTML = str;
+            } else {
+                document.getElementById("plan"+qtd_plan).innerHTML = "<option value='empty'>Selecione...</option>";
+            }
+        } else {
+            const buttonMorePlan = document.getElementById("btn-add-more-plan");
+            buttonMorePlan.disabled = true;
+        }
+    }
+
+    document.getElementById("product").addEventListener("change", getProduct);
+ </script>

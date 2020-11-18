@@ -1,0 +1,191 @@
+<div class="item coligation">
+    <div class="font-weight-lighter"> Haverá coligação? </div>
+        <input 
+        id="coalitionYes"
+        type="radio"
+        name="coalition"
+        value="{{form.coalition}}"
+        checked
+        >
+         <label for="coalitionYes">{{form.coalition}}</label>
+
+        {% if form.coalition === "Sim" %}
+            <div> Quantidade </div>
+                <input 
+                type="number" 
+                name="qtd_lives"
+                value="{{form.qtd_lives}}"
+                readonly
+                >                     
+        {% endif %}                 
+ </div>
+
+ <div class="item">
+    <div class="font-weight-lighter"> É empresa MEI? </div>
+    <input 
+    id="mei"
+    type="radio"
+    name="mei"  
+    value="{{form.mei}}"
+    checked
+    >
+    <label for="mei"> {{form.mei}} </label>
+ </div>
+
+ <div class="item">
+    <div class="font-weight-lighter"> Tabela </div>
+    <input type="text" class="form-control"value="{{form.table}}" readonly>
+ </div>
+
+ <div class="item">
+    <div class="font-weight-lighter">Nome da empresa</div>
+    <input type="text" class="form-control" name="company_name" value="{{form.company_name}}" readonly>
+ </div>
+
+  <div class="item">
+    <div class="font-weight-lighter"> CNPJ </div>
+    <input 
+    type="text" 
+    class="form-control" 
+    name="cnpj"
+    value="{{form.cnpj}}"
+    onkeydown="Mask.apply(this,'cnpj')"
+    readonly>
+ </div>
+
+ <div class="item">
+    <div class="font-weight-lighter">Cep</div>
+    <input 
+    type="text" 
+    name="cep"
+    value="{{form.cep}}"
+    class="form-control" 
+    onkeydown="Mask.apply(this,'cep')"
+    readonly>
+ </div>
+
+ {# Produto #}
+ <div class="item">
+    <div class="font-weight-lighter"> Produto </div>
+    <input type="text" class="form-control" value="{{form.product.split('_').join(' ').toUpperCase()}}" readonly>
+ </div>
+
+ {# Planos #}
+{% for plan in form.plans %}
+ <div class="item">
+    <div class="font-weight-lighter"> Plano </div>
+    <input type="text" class="form-control" value="{{plan.name}}" readonly>    
+ </div>
+
+<div id="ageGroup_plan1" class="ageGroup">
+    <div class="font-weight-lighter owner">  
+        <div>Vidas</div>
+    </div>
+    <div class="ageGroupField">
+        <div class="text-center"> 0-18 </div>
+        <input type="number" value="{{plan.ageGroups['0-18']}}" readonly>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 19-23 </div>
+        <input type="number" value="{{plan.ageGroups['19-23']}}" readonly>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 24-28 </div>
+        <input type="number" value="{{plan.ageGroups['24-28']}}" readonly>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 29-33 </div>
+        <input type="number" value="{{plan.ageGroups['29-33']}}" readonly>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 34-38 </div>
+        <input type="number" value="{{plan.ageGroups['34-38']}}" readonly>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 39-43 </div>
+        <input type="number" value="{{plan.ageGroups['39-43']}}" readonly>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 44-48 </div>
+        <input type="number" value="{{plan.ageGroups['44-48']}}" readonly>
+    </div>
+
+    <div class="ageGroupField">
+        <div class="text-center"> 49-53 </div>
+        <input type="number" value="{{plan.ageGroups['49-53']}}" readonly>
+    </div>
+
+      <div class="ageGroupField">
+        <div class="text-center"> 54-58 </div>
+        <input type="number" value="{{plan.ageGroups['54-58']}}" readonly>
+    </div>
+    
+    <div class="ageGroupField">
+        <div class="text-center"> 59 ou + </div>
+        <input type='number' min='0' data-toggle='modal' data-target="#modal_{{plan.name.replace('(', '').replace(')', '').split(' ').join('_')}}" readonly>
+    </div>
+ </div>
+
+{# Modal para faixa etária acima de 59 anos #}
+<div class='modal fade' id="modal_{{plan.name.replace('(', '').replace(')', '').split(' ').join('_')}}" tabindex='-1' role='dialog' aria-labelledby='modal_plan1' aria-hidden='true'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+        <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLabel'>Número de sócios</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>
+        <div class='modal-body'>
+            <p>Para esta categoria será necessário detalhar as faixas etárias e estado de sociedade destes beneficiários:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th class='ageGroupTitle'>Faixa etária</th>
+                        <th>Não-sócios</th>
+                        <th>Sócios / Cônjuge do Sócio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>De 59 a 63 anos</td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['59-63_nao_socios']}}" readonly></td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['59-63_socios_conjuges']}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>De 64 a 68 anos</td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['64-68_nao_socios']}}" readonly></td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['64-68_socios_conjuges']}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>De 69 a 73 anos</td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['69-73_nao_socios']}}" readonly></td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['69-73_socios_conjuges']}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>De 74 a 78 anos</td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['74-78_nao_socios']}}" readonly></td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['74-78_socios_conjuges']}}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>79 anos ou mais</td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['79_nao_socios']}}" readonly></td>
+                        <td class='ageGroupInput_plan1'><input type='number' value="{{plan.ageGroups['79_socios_conjuges']}}" readonly></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class='modal-footer'>
+            <button type='button' class='btn btn-primary' data-dismiss='modal'>Ok</button>
+        </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

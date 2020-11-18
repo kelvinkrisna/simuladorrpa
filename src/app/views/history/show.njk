@@ -1,0 +1,30 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<section class="container">  
+    {% if sucess or error %}
+        {% include 'parts/message.njk' %}
+    {% endif %}
+
+    <form method="" action="">
+
+        <div class="header">
+            <a href="/history" class="btn btn-primary btn-return">Voltar</a>
+            <h3 class="text-center">
+              Formulário {{ form.insurance_company }}
+            </h3>
+        </div>
+
+        <div id="fields" class="fields">
+            {% if form.insurance_company === 'Sulamérica' %} {% include 'history/fieldsForm1.njk' %} {% endif %}
+            {% if form.insurance_company === 'Amil' %} {% include 'history/fieldsForm2.njk' %} {% endif %}
+            {% if form.insurance_company === 'Bradesco' %} 
+            {% include 'history/fieldsForm3.njk' %} 
+             {% if form.profile_activity %}
+                 {% include 'history/fieldsForm3_page2.njk' %} 
+             {% endif %}
+            {% endif %}
+            
+        </div>
+    </form>
+</section>
+{% endblock content %}

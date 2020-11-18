@@ -1,0 +1,33 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<section class="container form3">  
+
+     {% if sucess or error %}
+        {% include 'parts/message.njk' %}
+    {% endif %}
+
+    
+    <form method="POST" action="/form3">
+
+        <div class="header">
+            <a href="/" class="btn btn-primary btn-return">Voltar</a>
+            <h3 class="text-center">Formulário Bradesco </h3>
+        </div>
+
+        <div class="fields">
+            {% include 'form3/fields/fieldsForm3.njk' %}
+            <input type="hidden" name="insurance_company" value ="Bradesco">
+            <input type="hidden" name="type" value ="SIMULAR" class="typeaction">
+        </div>
+
+       
+        <button class="btn btn-primary button-save btn-lg btn-block" onclick="addType(simular);Validate.form3(event)" type="submit"> SIMULAR </button> 
+       
+        <button type="submit" class="btn btn-primary button-save btn-lg btn-block" onclick="addType(cotar);Validate.form3(event);formPage2()"> COTAR </button>
+
+    </form>
+
+   
+</section>
+ {% include 'parts/popup.njk'%}
+{% endblock content %}

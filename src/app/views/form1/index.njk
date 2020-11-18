@@ -1,0 +1,25 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<section class="container">  
+    {% if sucess or error %}
+        {% include 'parts/message.njk' %}
+    {% endif %}
+
+    <form method="POST" action="/form1">
+
+        <div class="header">
+            <a href="/" class="btn btn-primary btn-return">Voltar</a>
+            <h3 class="text-center">Formulário SulAmerica</h3>
+        </div>
+
+        <div id="fields" class="fields">
+            {% include 'form1/fieldsForm1.njk' %}
+            <input type="hidden" name="insurance_company" value ="Sulamérica">
+        </div>
+
+        <button class="btn btn-primary button-save btn-lg btn-block" onclick="Validate.form1(event)" type="submit"> SALVAR </button>
+
+    </form>
+
+</section>
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<section class="container">
+     {% if sucess or error %}
+        {% include 'parts/message.njk' %}
+    {% endif %}
+
+    {% include 'parts/modalIndex.njk'%}
+
+</section>
+{% endblock content %}

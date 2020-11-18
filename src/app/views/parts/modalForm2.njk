@@ -1,0 +1,58 @@
+{# Modal para faixa etária acima de 59 anos #}
+<div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+<div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+    <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Número de sócios</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+        <span aria-hidden='true' onclick="modalForm2.closeModal()">&times;</span>
+        </button>
+    </div>
+    <div class='modal-body'>
+        <hr>
+        <p>Para esta categoria será necessário detalhar as faixas etárias e estado de sociedade destes beneficiários:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Faixa etária</th>
+                    <th>Não-sócios</th>
+                    <th>Sócios / Cônjuge do Sócio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>De 59 a 63 anos</td>
+                    <td class='ageGroupInput'><input type='number' name='naosocios_59-63' min='0' value='0'></td>
+                    <td class='ageGroupInput'><input type='number' name='socios_conjuges_59-63' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>De 64 a 68 anos</td>
+                    <td class='ageGroupInput'><input type='number' name='naosocios_64-68' min='0' value='0'></td>
+                    <td class='ageGroupInput'><input type='number' name='socios_conjuges_64-68' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>De 69 a 73 anos</td>
+                    <td class='ageGroupInput'><input type='number' name='naosocios_69-73' min='0' value='0'></td>
+                    <td class='ageGroupInput'><input type='number' name='socios_conjuges_69-73' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>De 74 a 78 anos</td>
+                    <td class='ageGroupInput'><input type='number' name='naosocios_74-78' min='0' value='0'></td>
+                    <td class='ageGroupInput'><input type='number' name='socios_conjuges_74-78' min='0' value='0'></td>
+                </tr>
+                <tr>
+                    <td>79 anos ou mais</td>
+                    <td class='ageGroupInput'><input type='number' name='naosocios_79+' min='0' value='0'></td>
+                    <td class='ageGroupInput'><input type='number' name='socios_conju_79+' min='0' value='0'></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='modal-footer'>
+        <button type='button' class='btn btn-secondary' onclick='modalForm2.cleanInputs()'>Limpar campos</button>
+        <button type='button' class='btn btn-primary' data-dismiss='modal' onclick="modalForm2.closeModal()">Ok</button>
+    </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,144 @@
+{# Cotação #}
+<div class="item">
+    <div class="font-weight-lighter"> Tipo de Cotação </div>
+    <input type="text" class="form-control" value="{{form.quote_type}}" readonly>
+</div>
+
+{# Tipo de Adesão #}
+<div class="item">
+    <div class="font-weight-lighter"> Tipo de Adesão</div>
+      <input 
+        id="acession1"
+        type="radio"
+        checked
+        readonly>
+         <label for="acession1"> {{form.acession}} </label>
+</div>
+{# Produto #}
+<div class="item">
+    <div class="font-weight-lighter"> Produto </div>
+    <input type="text" class="form-control" value="{{form.product}}" readonly>
+</div>
+{# SPG #}
+<div class="item">
+    <div class="font-weight-lighter"> Tipo de SPG </div>
+    <input type="text" class="form-control" value="{{form.spg}}" readonly>
+</div>
+
+<div class="item">
+    <div> Modalidade de Pagamento </div>
+    <input type="text" class="form-control" value="{{form.payment}}" readonly>
+</div>
+
+{# Coparticipação #}
+<div class="item">
+    <div class="font-weight-lighter"> Coparticipação </div>
+    <input type="text" class="form-control" value="{{form.co_participation}}" readonly>
+</div>
+
+{# Qtd de Titulares #}
+ <div class="item">
+    <div class="font-weight-lighter">Quantidade de Titulares</div>
+    <input 
+    id="qtsHolders1"
+    type="radio"
+    checked
+    >
+    <label for="qtsHolders1"> {{form.number_holders}} </label>
+ </div>
+
+{% for profile in form.profiles %}
+    {{profile['.0-18']}}
+
+    <div class="profile"> 
+    {# Rede #}
+    <div class="item">
+        <div class="font-weight-lighter"> Rede </div>
+        <input type="text" class="form-control" value="{{profile.network}}" readonly>    
+    </div>
+    {# Campo Regiao: Irá gerar POP-UP de acordo com a seleção #}
+    <div class="item">
+        <div class="font-weight-lighter"> Região </div>
+        <input type="text" class="form-control" value="{{profile.region}}" readonly>
+    </div>
+
+    {# Acomodação #}
+    <div class="item">
+        <div class="font-weight-lighter"> Acomodação </div>
+        <input type="text" class="form-control" value="{{profile.accommodation}}" readonly>
+    </div>
+    {# Titular #}
+    <div class="ageGroup">
+        <div class="font-weight-lighter owner">  
+            <div>Titular</div>
+        </div>
+        <div class="ageGroupField">
+            <div class="text-center"> 0-18 </div>
+            <input type="number" name="ageGroup18" value="{{profile.ageGroups['0-18']}}" readonly>
+        </div>
+
+        <div class="ageGroupField">
+            <div class="text-center"> 19-23 </div>
+            <input type="number" name="ageGroup23" value="{{profile.ageGroups['19-23']}}" readonly>
+        </div>
+
+        <div class="ageGroupField">
+            <div class="text-center"> 24-28 </div>
+            <input type="number" name="ageGroup28" value="{{profile.ageGroups['24-28']}}" readonly>
+        </div>
+
+        <div class="ageGroupField">
+            <div class="text-center"> 29-33 </div>
+            <input type="number" name="ageGroup33" value="{{profile.ageGroups['29-33']}}" readonly>
+        </div>
+
+        <div class="ageGroupField">
+            <div class="text-center"> 34-38 </div>
+            <input type="number" name="ageGroup38" value="{{profile.ageGroups['34-38']}}" readonly>
+        </div>
+
+        <div class="ageGroupField">
+            <div class="text-center"> 39-43 </div>
+            <input type="number" name="ageGroup43" value="{{profile.ageGroups['39-43']}}" readonly>
+        </div>
+
+        <div class="ageGroupField">
+            <div class="text-center"> 44-48 </div>
+            <input type="number" name="ageGroup48" value="{{profile.ageGroups['44-48']}}" readonly>
+        </div>
+
+        <div class="ageGroupField">
+            <div class="text-center"> 49-53 </div>
+            <input type="number" name="ageGroup53" value="{{profile.ageGroups['49-53']}}" readonly>
+        </div>
+
+    <div class="ageGroupField">
+            <div class="text-center"> 54-58 </div>
+            <input type="number" name="ageGroup58" value="{{profile.ageGroups['54-58']}}" readonly>
+        </div>
+
+    <div class="ageGroupField">
+            <div class="text-center"> 59-64 </div>
+            <input type="number" name="ageGroup58" value="{{profile.ageGroups['54-58']}}" readonly>
+        </div>
+
+    <div class="ageGroupField">
+            <div class="text-center"> 65-80 </div>
+            <input type="number" name="ageGroup58" value="{{profile.ageGroups['65-80']}}" readonly>
+        </div>
+
+
+        <div class="ageGroupField">
+            <div class="text-center"> 81 ou + </div>
+            <input type="number" name="ageGroup81" value="{{profile.ageGroups['81']}}" readonly>
+        </div> 
+    </div>
+
+    </div>
+
+{% endfor %}
+
+
+
+
+
