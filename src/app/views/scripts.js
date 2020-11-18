@@ -198,9 +198,9 @@ const holders = {
 };
 
 function addType(valor){
-  debug;
-  const file = document.querySelector('.profile');
-  file.setAttribute('value', valor);
+  debugger;
+  const file = document.querySelector('.typeaction');
+  file.setAttribute('value', valor.currentTarget.innerText);
 }
 
 function addProfile() {
